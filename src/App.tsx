@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, Grid, GridItem } from '@chakra-ui/react'
+import MovieList from './components/MovieList'
 
 function App() {
 
@@ -8,7 +9,9 @@ function App() {
     }}>
       <GridItem area='nav' bg='midnightblue'>Nav</GridItem>
       <GridItem area='filters' bg='darkblue'>Filters</GridItem>
-      <GridItem area='main' bg='dodgerblue'>Main</GridItem>
+      <GridItem area='main' bg='dodgerblue'>
+        <MovieList />
+      </GridItem>
     </Grid>
   )
 }
