@@ -9,7 +9,7 @@ function App() {
     }}>
       <GridItem area='nav' bg='midnightblue'>Nav</GridItem>
       <GridItem area='filters' bg='darkblue'>Filters</GridItem>
-      <GridItem area='main' bg='dodgerblue'>
+      <GridItem area='main'>
         <MovieList />
       </GridItem>
     </Grid>
