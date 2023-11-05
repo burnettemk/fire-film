@@ -6,7 +6,7 @@ const MovieList = () => {
   const {movies, error, isLoading} = useMovies();
 
   return (
-    <SimpleGrid columns={{sm: 1, md: 2, lg:3, xl: 4}} spacing={10} padding={10}>
+    <SimpleGrid columns={{sm: 1, md: 2, lg:3, xl: 4}} spacing={10} padding={20}>
       {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
     </SimpleGrid>
   )
