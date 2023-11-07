@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { headers } from "../components/config";
 import apiClient from "../services/api-client";
-import { headers, tmdbMovieDetailConfig } from "../components/config";
 
 interface Genre {
     id: number;
