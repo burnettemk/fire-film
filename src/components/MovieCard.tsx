@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
+import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Movie } from '../hooks/useMovies'
 import CriticScore from './CriticScore'
 import getCroppedImageUrl from '../services/image-url'
@@ -9,11 +9,13 @@ interface Props {
 }
 const MovieCard = ({ movie }: Props) => {
   return (
-    <Card borderRadius={10} overflow='hidden'>
-        <Image src={getCroppedImageUrl(apiConfig.images.base_url + movie.poster_path)}/>
-        <CardBody marginBottom={10}>
+    <Card overflow='hidden' bg='transparent'>
+        <Image borderRadius={10} src={getCroppedImageUrl(apiConfig.images.base_url + movie.poster_path)}/>
+        <CardBody>
+          <Box marginTop={-10} paddingBottom={2}>
+            <CriticScore score={movie.vote_average}/>
+          </Box>
           <Heading fontSize='2xl'>{movie.title}</Heading>
-          <CriticScore score={movie.vote_average} />
         </CardBody>
     </Card>
   )

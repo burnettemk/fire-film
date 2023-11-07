@@ -7,7 +7,7 @@ const MovieList = () => {
 
   return (
     <>
-      <SimpleGrid columns={{sm: 1, md: 2, lg:3, xl: 4}} spacing={10} padding={20}>
+      <SimpleGrid columns={{sm: 1, md: 2, lg: 4, xl: 6}} spacing={10} padding={19} /*mx='auto' maxW='85%'*/>
         {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
       </SimpleGrid>
     </>
