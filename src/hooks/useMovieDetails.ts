@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { headers } from "../components/config";
+import { headers } from "../services/config";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 

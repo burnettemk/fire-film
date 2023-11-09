@@ -1,6 +1,6 @@
 import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
-import { headers } from "../components/config";
+import { headers } from "../services/config";
 import apiClient from "../services/api-client";
 
 export interface Movie {
@@ -23,7 +23,7 @@ const useMovies = () => {
     const controller = new AbortController();
 
     setIsLoading(true);
-    apiClient.get<MoviesResponse>('https://api.themoviedb.org/3/discover/movie'
+    apiClient.get<MoviesResponse>('/discover/movie'
     , { headers,
         params: {
           include_adult: false,
