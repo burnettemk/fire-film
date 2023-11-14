@@ -1,13 +1,13 @@
-import { Button, ButtonGroup, Grid, GridItem } from '@chakra-ui/react'
-import MovieGrid from './components/MovieGrid'
+import { Grid, GridItem } from '@chakra-ui/react'
 import GenreSelection from './components/GenreSelection'
+import MovieGrid from './components/MovieGrid'
 import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <Grid templateAreas={{
-      base: `"nav" "filters" "main"`
+      base: `"nav" "filters" "main" "footer"`
     }}>
       <GridItem area='nav'>
         <NavBar />
@@ -16,6 +16,9 @@ function App() {
       <GridItem area='main'>
         <GenreSelection />
         <MovieGrid />
+      </GridItem>
+      <GridItem area='footer' bg='black'>
+        Footer
       </GridItem>
     </Grid>
   )
