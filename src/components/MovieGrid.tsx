@@ -12,8 +12,9 @@ const MovieGrid = () => {
       <SimpleGrid 
         columns={{sm: 1, md: 2, lg: 4, xl: 6}}
         spacing={10} 
-        padding={19} 
-        /*mx='auto' maxW='85%'*/
+        padding='19px'
+        mx='auto' 
+        maxW='89%'
         >
         {isLoading && skeletons.map(skeleton => <MovieCardSkeleton key={skeleton} />)}
         {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}

@@ -14,8 +14,10 @@ const NavBar = () => {
             paddingX={3} 
             paddingY={2}
             mx={2}
-            color='maroon'
+            color='black'
             boxShadow='xl'
+            // fontWeight='bold'
+            // fontSize='sm'
         >
             FF
         </Box>
