@@ -15,7 +15,7 @@ const Filters = () => {
         mx="auto"
         borderRadius={13}
       >
-        <HStack justifyContent="space-around" spacing={3} px={{ base: "20px" }}>
+        <HStack justifyContent="space-around" spacing={3} px={5}>
           <GenreSelection />
           <RatingSelection />
           <ListSelection />
