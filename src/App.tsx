@@ -1,7 +1,10 @@
 import { Grid, GridItem } from '@chakra-ui/react'
-import GenreSelection from './components/GenreSelection'
+import GenreSelection from './components/filters/GenreSelection'
 import MovieGrid from './components/MovieGrid'
 import NavBar from './components/NavBar'
+import Filters from './components/Filters'
+import TMDBLogo from './components/TMDBLogo'
+import PageSelector from './components/PageSelector'
 
 function App() {
 
@@ -12,13 +15,14 @@ function App() {
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
-      <GridItem area='filters' bg='darkblue'>Filters</GridItem>
+      <GridItem area='filters'>
+        <Filters />
+      </GridItem>
       <GridItem area='main'>
-        <GenreSelection />
         <MovieGrid />
       </GridItem>
       <GridItem area='footer' bg='black'>
-        Footer
+        <TMDBLogo />
       </GridItem>
     </Grid>
   )
