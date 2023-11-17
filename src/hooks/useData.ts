@@ -2,6 +2,7 @@ import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import { headers } from "../services/config";
 import apiClient from "../services/api-client";
+import genres from "../data/genres";
   
 interface FetchResponse<T> {
     results: T[];
@@ -23,8 +24,6 @@ const useData = <T>(endpoint : string, params : {}) => {
         signal: controller.signal})
     .then((res) => {
       setData(res.data.genres);
-      console.log("data: " + res.data);
-      console.log("results: " + res.data.results);
       setIsLoading(false);
     })
     .catch(err => {
