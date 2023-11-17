@@ -4,7 +4,7 @@ import SearchInput from './SearchInput'
 
 const NavBar = () => {
   return (
-    <>
+    <Box bg='blackAlpha.300'>
       <Flex padding={2} mx={3}>
         <Box 
             w='40px' 
@@ -28,7 +28,7 @@ const NavBar = () => {
           <MovieTVToggle />
         </Box>
       </Flex>
-    </>
+    </Box>
   )
 }
 
