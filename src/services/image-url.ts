@@ -1,4 +1,4 @@
-const width = 400;
+const width = 342;
 
 const getCroppedImageUrl = (url: string) => {
   const target = "p/";
