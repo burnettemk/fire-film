@@ -15,7 +15,7 @@ const MovieCard = ({ movie }: Props) => {
           <Box marginTop={-10} paddingBottom={2}>
             <CriticScore score={movie.vote_average}/>
           </Box>
-          <Heading fontSize='xl' textAlign='center'>{movie.title}</Heading>
+          <Heading fontSize={{sm: '4xl', xl: 'xl'}} textAlign='center'>{movie.title}</Heading>
         </CardBody>
     </Card>
   )

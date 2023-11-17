@@ -1,5 +1,4 @@
 import { Badge } from '@chakra-ui/react';
-import React from 'react'
 
 interface Props {
     score: number;
@@ -16,7 +15,7 @@ const CriticScore = ({ score }: Props) => {
 
   return (
     <Badge 
-      fontSize='14px' 
+      fontSize={{sm: '28px', xl: '14px'}}
       paddingX={2} 
       borderRadius={4} 
       colorScheme={color} 
