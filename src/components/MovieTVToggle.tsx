@@ -3,7 +3,6 @@ import { HStack, Icon, Text, VStack } from '@chakra-ui/react'
 import { PiArrowBendDownRightBold, PiArrowBendUpLeftBold } from 'react-icons/pi'
 
 const MovieTVToggle = () => {
-  let a = 5;
   const [isMoviesSelected, setIsMoviesSelected] = useState(true);
 
   return (
