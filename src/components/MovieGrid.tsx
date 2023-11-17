@@ -15,7 +15,7 @@ const MovieGrid = () => {
         spacing={{ base: "3.5em", lg: "2.5em", "2xl": "1.5em" }}
         padding={{ base: "4em" }}
         mx="auto"
-        maxW="89%"
+        w="89%"
       >
         {isLoading &&
           skeletons.map((skeleton) => <MovieCardSkeleton key={skeleton} />)}
