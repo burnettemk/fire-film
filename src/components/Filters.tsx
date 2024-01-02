@@ -15,9 +15,6 @@ const Filters = () => {
         mx="auto"
         borderRadius={13}
       >
-        {/* <SimpleGrid>
-
-        </SimpleGrid> */}
         {/* <HStack justifyContent="space-around" spacing={3} px={5}>
           <GenreSelection />
           <RatingSelection />
