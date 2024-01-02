@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Spacer } from "@chakra-ui/react";
+import { Box, Flex, HStack, SimpleGrid, Spacer } from "@chakra-ui/react";
 import AdvancedFilters from "./filters/AdvancedFilters";
 import GenreSelection from "./filters/GenreSelection";
 import ListSelection from "./filters/ListSelection";
@@ -15,11 +15,14 @@ const Filters = () => {
         mx="auto"
         borderRadius={13}
       >
-        <HStack justifyContent="space-around" spacing={3} px={5}>
+        {/* <SimpleGrid>
+
+        </SimpleGrid> */}
+        {/* <HStack justifyContent="space-around" spacing={3} px={5}>
           <GenreSelection />
           <RatingSelection />
           <ListSelection />
-        </HStack>
+        </HStack> */}
         <Flex mt="10px">
           <Spacer />
           <AdvancedFilters />
