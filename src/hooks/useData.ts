@@ -2,13 +2,15 @@ import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import { headers } from "../services/config";
 import apiClient from "../services/api-client";
-import genres from "../data/genres";
+import useMovieQueryStore from "../store";
 
 interface FetchResponse<T> {
   results: T[];
 }
 
-const useData = <T>(endpoint: string, params: {}) => {
+const useData = <T>(endpoint: string) => {
+  const movieQuery = useMovieQueryStore((s) => s.movieQuery);
+
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +22,7 @@ const useData = <T>(endpoint: string, params: {}) => {
     apiClient
       .get<FetchResponse<T>>(endpoint, {
         headers,
-        params,
+        params: movieQuery,
         signal: controller.signal,
       })
       .then((res) => {
