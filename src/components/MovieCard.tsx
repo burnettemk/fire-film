@@ -2,7 +2,7 @@ import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import { Movie } from "../hooks/useMovies";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
-import apiConfig from "../services/apiConfig";
+import apiConfig from "../configuration/apiConfig";
 
 interface Props {
   movie: Movie;
