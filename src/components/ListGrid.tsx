@@ -24,7 +24,7 @@ const ListGrid = ({ list }: Props) => {
       >
         {isLoading &&
           skeletons.map((skeleton) => <MovieCardSkeleton key={skeleton} />)}
-        {data.map((movie) => (
+        {data?.results.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </SimpleGrid>

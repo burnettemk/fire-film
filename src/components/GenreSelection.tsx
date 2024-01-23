@@ -8,11 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { IoChevronDown } from "react-icons/io5";
 import useGenres from "../hooks/useGenres";
-import genres from "../data/genres";
 import useMovieQueryStore from "../store";
 import useGenre from "../hooks/useGenre";
 
 const GenreSelection = () => {
+  const { data: genres, isLoading, error } = useGenres();
   const setGenreIDs = useMovieQueryStore((s) => s.setGenres);
   const selectedGenreID = useMovieQueryStore((s) => s.movieQuery.with_genres);
   // Fix to make parse all ids from string

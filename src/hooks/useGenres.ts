@@ -1,10 +1,33 @@
-import useData from "./useData";
+import { useQuery } from "@tanstack/react-query";
+import ms from "ms";
+import { axiosInstance } from "../services/api-client";
+import genres from "../data/genres";
 
 export interface Genre {
   id: number;
   name: string;
 }
 
-const useGenres = () => useData<Genre>("/genre/movie/list");
+interface GenreResults {
+  genres: Genre[];
+}
+
+const params = {
+  language: "en",
+};
+
+const fetchGenres = () => {
+  return axiosInstance
+    .get<GenreResults>("/genre/movie/list")
+    .then((res) => res.data);
+};
+
+const useGenres = () =>
+  useQuery<GenreResults, Error>({
+    queryKey: ["genresM"],
+    queryFn: fetchGenres,
+    staleTime: ms("24h"),
+    initialData: { genres: genres.genres },
+  });
 
 export default useGenres;

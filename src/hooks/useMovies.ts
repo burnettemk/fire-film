@@ -1,8 +1,9 @@
-import { CanceledError } from "axios";
-import { useEffect, useState } from "react";
-import { headers } from "../services/config";
-import apiClient from "../services/api-client";
+import { FetchResponse } from "../services/api-client";
 import useMovieQueryStore from "../store";
+import APICLient from "../services/api-client";
+import { useQuery } from "@tanstack/react-query";
+
+const apiClient = new APICLient<Movie>("/discover/movie");
 
 export interface Movie {
   id: number;
@@ -18,34 +19,14 @@ interface MoviesResponse {
 const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery);
 
-  const [data, setData] = useState<Movie[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    setIsLoading(true);
-    apiClient
-      .get<MoviesResponse>("/discover/movie", {
-        headers,
+  return useQuery<FetchResponse<Movie>, Error>({
+    queryKey: ["movies", movieQuery],
+    queryFn: () =>
+      apiClient.getAll({
         params: movieQuery,
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setData(res.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [movieQuery]);
-
-  return { data, error, isLoading };
+      }),
+    staleTime: 15 * 1000,
+  });
 };
 
 export default useMovies;

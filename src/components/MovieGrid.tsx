@@ -19,7 +19,7 @@ const MovieGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => <MovieCardSkeleton key={skeleton} />)}
-        {movies.map((movie) => (
+        {movies?.results.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </SimpleGrid>
