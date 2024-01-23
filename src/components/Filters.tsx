@@ -7,24 +7,8 @@ import RatingSelection from "./filters/RatingSelection";
 const Filters = () => {
   return (
     <>
-      <Box
-        bg="gray.700"
-        px="15px"
-        py="10px"
-        width="fit-content"
-        mx="auto"
-        borderRadius={13}
-      >
-        {/* <HStack justifyContent="space-around" spacing={3} px={5}>
-          <GenreSelection />
-          <RatingSelection />
-          <ListSelection />
-        </HStack> */}
-        <Flex mt="10px">
-          <Spacer />
-          <GenreSelection />
-          <Spacer />
-        </Flex>
+      <Box width="fit-content" mx="auto" mt="10px">
+        <GenreSelection />
       </Box>
     </>
   );

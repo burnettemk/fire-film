@@ -18,7 +18,7 @@ interface MoviesResponse {
 const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery);
 
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [data, setData] = useState<Movie[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,7 +33,7 @@ const useMovies = () => {
         signal: controller.signal,
       })
       .then((res) => {
-        setMovies(res.data.results);
+        setData(res.data.results);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -45,7 +45,7 @@ const useMovies = () => {
     return () => controller.abort();
   }, [movieQuery]);
 
-  return { movies, error, isLoading };
+  return { data, error, isLoading };
 };
 
 export default useMovies;

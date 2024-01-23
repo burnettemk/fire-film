@@ -1,11 +1,16 @@
+import React from "react";
+import useList from "../hooks/useList";
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import useMovies from "../hooks/useMovies";
-import MovieCard from "./MovieCard";
 import MovieCardSkeleton from "./MovieCardSkeleton";
+import MovieCard from "./MovieCard";
 import PageSelector from "./PageSelector";
 
-const MovieGrid = () => {
-  const { data: movies, error, isLoading } = useMovies();
+interface Props {
+  list: string;
+}
+
+const ListGrid = ({ list }: Props) => {
+  const { data, error, isLoading } = useList(list);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   return (
@@ -19,7 +24,7 @@ const MovieGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => <MovieCardSkeleton key={skeleton} />)}
-        {movies.map((movie) => (
+        {data.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </SimpleGrid>
@@ -28,4 +33,4 @@ const MovieGrid = () => {
   );
 };
 
-export default MovieGrid;
+export default ListGrid;
