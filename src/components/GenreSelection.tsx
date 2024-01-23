@@ -7,10 +7,10 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { IoChevronDown } from "react-icons/io5";
-import useGenres from "../../hooks/useGenres";
-import genres from "../../data/genres";
-import useMovieQueryStore from "../../store";
-import useGenre from "../../hooks/useGenre";
+import useGenres from "../hooks/useGenres";
+import genres from "../data/genres";
+import useMovieQueryStore from "../store";
+import useGenre from "../hooks/useGenre";
 
 const GenreSelection = () => {
   const setGenreIDs = useMovieQueryStore((s) => s.setGenres);
