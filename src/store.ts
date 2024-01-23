@@ -9,6 +9,7 @@ interface MovieQuery {
   searchText?: string;
   keywords?: string;
   cast?: string;
+  with_genres?: string;
 }
 
 interface MovieQueryStore {
@@ -20,6 +21,7 @@ interface MovieQueryStore {
   setSearchText: (searchText: string) => void;
   setKeywords: (keywords: string) => void;
   setCast: (cast: string) => void;
+  setGenres: (genres: string) => void;
 }
 
 const useMovieQueryStore = create<MovieQueryStore>((set) => ({
@@ -43,6 +45,8 @@ const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     set((store) => ({ movieQuery: { ...store.movieQuery, keywords } })),
   setCast: (cast) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, cast } })),
+  setGenres: (with_genres) =>
+    set((store) => ({ movieQuery: { ...store.movieQuery, with_genres } })),
   setSearchText: (searchText) => set(() => ({ movieQuery: { searchText } })),
 }));
 

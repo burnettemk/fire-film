@@ -22,7 +22,7 @@ const Filters = () => {
         </HStack> */}
         <Flex mt="10px">
           <Spacer />
-          <AdvancedFilters />
+          <GenreSelection />
           <Spacer />
         </Flex>
       </Box>

@@ -43,7 +43,7 @@ const useMovies = () => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [movieQuery]);
 
   return { movies, error, isLoading };
 };
