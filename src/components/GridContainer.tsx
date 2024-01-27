@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { IoChevronDown } from "react-icons/io5";
 import ListGrid from "./ListGrid";
+import PageSelector from "./PageSelector";
+import useMovieQueryStore from "../store";
 
 const listTypes = ["movies", "now_playing", "upcoming", "popular", "top_rated"];
 const listNames = [
@@ -40,27 +42,48 @@ const replaceName = (name: string) => {
 };
 
 const GridContainer = () => {
-  const [list, setList] = useState(listTypes[0]);
+  const [order, setOrder] = useState("Popularity");
+  const setSortOrder = useMovieQueryStore((s) => s.setSortOrder);
 
   return (
     <>
       <Box width="fit-content" mx="auto" my="10px">
         <Menu>
           <MenuButton as={Button} rightIcon={<IoChevronDown />}>
-            {replaceName(list)}
+            {order}
           </MenuButton>
           <MenuList>
-            <MenuItem onClick={() => setList(listTypes[0])}>Movies</MenuItem>
-            <MenuItem onClick={() => setList(listTypes[1])}>
+            <MenuItem
+              onClick={() => {
+                setSortOrder("release_date.desc");
+                setOrder("Recent");
+              }}
+            >
               Now Playing
             </MenuItem>
-            <MenuItem onClick={() => setList(listTypes[2])}>Upcoming</MenuItem>
-            <MenuItem onClick={() => setList(listTypes[3])}>Popular</MenuItem>
-            <MenuItem onClick={() => setList(listTypes[4])}>Top Rated</MenuItem>
+            <MenuItem
+              onClick={() => {
+                setSortOrder("popularity.desc");
+                setOrder("Popularity");
+              }}
+            >
+              Popular
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                setSortOrder("vote_count.desc");
+                setOrder("Vote Avg.");
+              }}
+            >
+              Top Rated
+            </MenuItem>
           </MenuList>
         </Menu>
       </Box>
-      {list === "movies" ? <MovieGrid /> : <ListGrid list={list} />}
+      <MovieGrid />
+      <Box bg="blackAlpha.300">
+        <PageSelector />
+      </Box>
     </>
   );
 };

@@ -5,7 +5,7 @@ interface MovieQuery {
   include_video?: boolean;
   sortOrder?: string;
   language?: string;
-  pageNumber?: number;
+  page?: number;
   searchText?: string;
   keywords?: string;
   cast?: string;
@@ -22,6 +22,7 @@ interface MovieQueryStore {
   setKeywords: (keywords: string) => void;
   setCast: (cast: string) => void;
   setGenres: (genres: string) => void;
+  setPageNumber: (page: number) => void;
 }
 
 const useMovieQueryStore = create<MovieQueryStore>((set) => ({
@@ -31,7 +32,6 @@ const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     language: "en-US",
     page: 1,
     sort_by: "popularity.desc",
-    // with_keywords: "9715",
   },
   setIncludeAdult: (include_adult) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, include_adult } })),
@@ -47,6 +47,8 @@ const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     set((store) => ({ movieQuery: { ...store.movieQuery, cast } })),
   setGenres: (with_genres) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, with_genres } })),
+  setPageNumber: (page) =>
+    set((store) => ({ movieQuery: { ...store.movieQuery, page } })),
   setSearchText: (searchText) => set(() => ({ movieQuery: { searchText } })),
 }));
 
