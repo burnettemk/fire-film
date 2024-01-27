@@ -3,7 +3,7 @@ import { create } from "zustand";
 interface MovieQuery {
   include_adult?: boolean;
   include_video?: boolean;
-  sortOrder?: string;
+  sort_by?: string;
   language?: string;
   page?: number;
   searchText?: string;
@@ -37,8 +37,7 @@ const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     set((store) => ({ movieQuery: { ...store.movieQuery, include_adult } })),
   setIncludeVideo: (include_video) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, include_video } })),
-  setSortOrder: (sortOrder) =>
-    set((store) => ({ movieQuery: { ...store.movieQuery, sortOrder } })),
+  setSortOrder: (sort_by) => set((store) => ({ movieQuery: { sort_by } })),
   setLanguage: (language) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, language } })),
   setKeywords: (keywords) =>

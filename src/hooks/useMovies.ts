@@ -1,7 +1,11 @@
 import { FetchResponse } from "../services/api-client";
 import useMovieQueryStore from "../store";
 import APICLient from "../services/api-client";
-import { useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
 
 const apiClient = new APICLient<Movie>("/discover/movie");
 
@@ -26,6 +30,7 @@ const useMovies = () => {
         params: movieQuery,
       }),
     staleTime: 15 * 1000,
+    placeholderData: keepPreviousData,
   });
 };
 
