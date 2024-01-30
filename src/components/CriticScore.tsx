@@ -8,6 +8,7 @@ const CriticScore = ({ score }: Props) => {
   let color = "";
   if (score >= 7) color = "green";
   else if (score > 5) color = "yellow";
+  else if (score == 0) color = "gray";
   else color = "red";
 
   return (
@@ -26,7 +27,7 @@ const CriticScore = ({ score }: Props) => {
       borderColor={color}
       borderWidth={2}
     >
-      {score}
+      {score > 0 ? score : "NR"}
     </Badge>
   );
 };

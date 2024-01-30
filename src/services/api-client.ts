@@ -3,6 +3,7 @@ import { headers } from "./config";
 
 export interface FetchResponse<T> {
   results: T[];
+  total_pages: number;
 }
 
 export const axiosInstance = axios.create({

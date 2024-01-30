@@ -1,11 +1,7 @@
 import { FetchResponse } from "../services/api-client";
 import useMovieQueryStore from "../store";
 import APICLient from "../services/api-client";
-import {
-  keepPreviousData,
-  useInfiniteQuery,
-  useQuery,
-} from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const apiClient = new APICLient<Movie>("/discover/movie");
 
@@ -16,21 +12,22 @@ export interface Movie {
   vote_average: number;
 }
 
-interface MoviesResponse {
-  results: Movie[];
-}
-
 const useMovies = () => {
   const movieQuery = useMovieQueryStore((s) => s.movieQuery);
 
-  return useQuery<FetchResponse<Movie>, Error>({
+  return useInfiniteQuery<FetchResponse<Movie>, Error>({
     queryKey: ["movies", movieQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam }) =>
       apiClient.getAll({
-        params: movieQuery,
+        params: { ...movieQuery, page: pageParam },
       }),
-    staleTime: 15 * 1000,
-    placeholderData: keepPreviousData,
+    // staleTime: 15 * 1000,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      return allPages.length <= lastPage.total_pages
+        ? allPages.length + 1
+        : undefined;
+    },
   });
 };
 
