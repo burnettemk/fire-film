@@ -81,9 +81,6 @@ const GridContainer = () => {
         </Menu>
       </Box>
       <MovieGrid />
-      <Box bg="blackAlpha.300">
-        <PageSelector />
-      </Box>
     </>
   );
 };
