@@ -1,9 +1,10 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import MovieCardSkeleton from "./MovieCardSkeleton";
 import PageSelector from "./PageSelector";
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const MovieGrid = () => {
   const {
@@ -17,8 +18,16 @@ const MovieGrid = () => {
   } = useMovies();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
+  const fetchedMoviesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
-    <Box bg="blackAlpha.300">
+    <InfiniteScroll
+      dataLength={fetchedMoviesCount}
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={<Spinner />}
+    >
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 4, xl: 5 }}
         spacing={{ base: "3.5em", lg: "2.5em", "2xl": "2.9em" }}
@@ -35,21 +44,8 @@ const MovieGrid = () => {
             ))}
           </React.Fragment>
         ))}
-        <div>
-          <button
-            onClick={() => fetchNextPage()}
-            disabled={!hasNextPage || isFetchingNextPage}
-          >
-            {isFetchingNextPage
-              ? "Loading more..."
-              : hasNextPage
-              ? "Load More"
-              : "Nothing more to load"}
-          </button>
-        </div>
-        <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
       </SimpleGrid>
-    </Box>
+    </InfiniteScroll>
   );
 };
 

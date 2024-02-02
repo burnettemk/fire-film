@@ -24,7 +24,7 @@ const useMovies = () => {
     // staleTime: 15 * 1000,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
-      return allPages.length <= lastPage.total_pages
+      return allPages.length <= lastPage.total_pages || allPages.length <= 500
         ? allPages.length + 1
         : undefined;
     },
