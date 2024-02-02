@@ -71,7 +71,7 @@ const GridContainer = () => {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                setSortOrder("vote_count.desc");
+                setSortOrder("vote_average.desc");
                 setOrder("Vote Avg.");
               }}
             >
@@ -80,7 +80,9 @@ const GridContainer = () => {
           </MenuList>
         </Menu>
       </Box>
-      <MovieGrid />
+      <Box bg="blackAlpha.300">
+        <MovieGrid />
+      </Box>
     </>
   );
 };

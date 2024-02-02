@@ -16,9 +16,8 @@ const CriticScore = ({ score }: Props) => {
       fontSize={{
         base: "3xl",
         md: "2xl",
-        lg: "xl",
-        xl: "xl",
-        "2xl": "lg",
+        lg: "lg",
+        xl: "lg",
       }}
       paddingX={2}
       borderRadius={4}
@@ -27,7 +26,7 @@ const CriticScore = ({ score }: Props) => {
       borderColor={color}
       borderWidth={2}
     >
-      {score > 0 ? score : "NR"}
+      {parseFloat(score.toFixed(1)) > 0 ? parseFloat(score.toFixed(1)) : "NR"}
     </Badge>
   );
 };

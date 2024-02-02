@@ -10,6 +10,7 @@ interface MovieQuery {
   keywords?: string;
   cast?: string;
   with_genres?: string;
+  "vote_count.gte"?: number;
 }
 
 interface MovieQueryStore {
@@ -32,12 +33,14 @@ const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     language: "en-US",
     page: 1,
     sort_by: "popularity.desc",
+    "vote_count.gte": 250,
   },
   setIncludeAdult: (include_adult) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, include_adult } })),
   setIncludeVideo: (include_video) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, include_video } })),
-  setSortOrder: (sort_by) => set((store) => ({ movieQuery: { sort_by } })),
+  setSortOrder: (sort_by) =>
+    set((store) => ({ movieQuery: { ...store.movieQuery, sort_by } })),
   setLanguage: (language) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, language } })),
   setKeywords: (keywords) =>
