@@ -2,7 +2,6 @@ import { Box, SimpleGrid, Spinner } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import CardSkeleton from "./CardSkeleton";
-import PageSelector from "./PageSelector";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
