@@ -1,12 +1,11 @@
 import { Box, SimpleGrid, Spinner } from "@chakra-ui/react";
-import useMovies from "../hooks/useMovies";
-import MovieCard from "./MovieCard";
 import CardSkeleton from "./CardSkeleton";
-import PageSelector from "./PageSelector";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import useTV from "../hooks/useTV";
+import SeriesCard from "./SeriesCard";
 
-const MovieGrid = () => {
+const TVGrid = () => {
   const {
     data,
     error,
@@ -15,15 +14,15 @@ const MovieGrid = () => {
     isFetching,
     hasNextPage,
     isFetchingNextPage,
-  } = useMovies();
+  } = useTV();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-  const fetchedMoviesCount =
+  const fetchedSeriesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
   return (
     <InfiniteScroll
-      dataLength={fetchedMoviesCount}
+      dataLength={fetchedSeriesCount}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
       loader={<Spinner />}
@@ -44,8 +43,8 @@ const MovieGrid = () => {
           skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.results.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+            {page.results.map((series) => (
+              <SeriesCard key={series.id} series={series} />
             ))}
           </React.Fragment>
         ))}
@@ -54,4 +53,4 @@ const MovieGrid = () => {
   );
 };
 
-export default MovieGrid;
+export default TVGrid;

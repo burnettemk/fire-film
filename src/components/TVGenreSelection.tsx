@@ -1,3 +1,5 @@
+import React from "react";
+import { useTVQueryStore } from "../store";
 import {
   Button,
   Menu,
@@ -7,21 +9,19 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { IoChevronDown } from "react-icons/io5";
-import useGenres from "../hooks/useGenres";
-import { useMovieQueryStore } from "../store";
-import useGenre from "../hooks/useGenre";
+import useGenresTV from "../hooks/useGenresTV";
 
-const GenreSelection = () => {
-  const { data: genres, isLoading, error } = useGenres();
-  const setGenreIDs = useMovieQueryStore((s) => s.setGenres);
-  const selectedGenreID = useMovieQueryStore((s) => s.movieQuery.with_genres);
+const TVGenreSelection = () => {
+  const { data: genres, isLoading, error } = useGenresTV();
+  const setGenreIDs = useTVQueryStore((s) => s.setGenres);
+  const selectedGenreID = useTVQueryStore((s) => s.tvQuery.with_genres);
   // Fix to make parse all ids from string
-  const selectedGenre = useGenre(parseInt(selectedGenreID!));
+  // const selectedGenre = useGenre(parseInt(selectedGenreID!));
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<IoChevronDown />}>
-        {selectedGenreID ? selectedGenre?.name : "Genre"}
+        Genre
       </MenuButton>
       <MenuList>
         <MenuOptionGroup
@@ -39,4 +39,4 @@ const GenreSelection = () => {
   );
 };
 
-export default GenreSelection;
+export default TVGenreSelection;

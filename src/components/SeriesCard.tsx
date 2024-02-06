@@ -1,20 +1,22 @@
+import React from "react";
+import { Series } from "../hooks/useTV";
 import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
-import { Movie } from "../hooks/useMovies";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import apiConfig from "../configuration/apiConfig";
 
 interface Props {
-  movie: Movie;
+  series: Series;
 }
-const MovieCard = ({ movie }: Props) => {
+
+const SeriesCard = ({ series }: Props) => {
   return (
     <Card overflow="hidden" bg="transparent">
       <Image
         // width={{ sm: "80%" }}
         // mx="auto"
         borderRadius={10}
-        src={getCroppedImageUrl(apiConfig.images.base_url + movie.poster_path)}
+        src={getCroppedImageUrl(apiConfig.images.base_url + series.poster_path)}
       />
       <CardBody>
         <Box
@@ -26,7 +28,7 @@ const MovieCard = ({ movie }: Props) => {
           }}
           paddingBottom={2}
         >
-          <CriticScore score={movie.vote_average} />
+          <CriticScore score={series.vote_average} />
         </Box>
         <Heading
           fontSize={{
@@ -39,11 +41,11 @@ const MovieCard = ({ movie }: Props) => {
           }}
           textAlign="center"
         >
-          {movie.title}
+          {series.name}
         </Heading>
       </CardBody>
     </Card>
   );
 };
 
-export default MovieCard;
+export default SeriesCard;

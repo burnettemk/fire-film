@@ -1,25 +1,25 @@
 import { FetchResponse } from "../services/api-client";
-import { useMovieQueryStore } from "../store";
+import { useTVQueryStore } from "../store";
 import APICLient from "../services/api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const apiClient = new APICLient<Movie>("/discover/movie");
+const apiClient = new APICLient<Series>("/discover/tv");
 
-export interface Movie {
+export interface Series {
   id: number;
-  title: string;
+  name: string;
   poster_path: string;
   vote_average: number;
 }
 
 const useMovies = () => {
-  const movieQuery = useMovieQueryStore((s) => s.movieQuery);
+  const tvQuery = useTVQueryStore((s) => s.tvQuery);
 
-  return useInfiniteQuery<FetchResponse<Movie>, Error>({
-    queryKey: ["movies", movieQuery],
+  return useInfiniteQuery<FetchResponse<Series>, Error>({
+    queryKey: ["tv", tvQuery],
     queryFn: ({ pageParam }) =>
       apiClient.getAll({
-        params: { ...movieQuery, page: pageParam },
+        params: { ...tvQuery, page: pageParam },
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
