@@ -21,6 +21,13 @@ interface TVQuery {
   "vote_count.gte"?: number;
 }
 
+interface SearchQuery {
+  query?: string;
+  include_adult?: boolean;
+  language?: string;
+  page?: number;
+}
+
 interface isMoviesSelectedStore {
   isSelected: boolean;
   setIsMoviesSelected: (isSelected: boolean) => void;
@@ -44,6 +51,13 @@ interface TVQueryStore {
   setSortOrder: (sortOrder: string) => void;
   setLanguage: (language: string) => void;
   setGenres: (genres: string) => void;
+  setPageNumber: (page: number) => void;
+}
+
+interface searchQueryStore {
+  searchQuery: SearchQuery;
+  setQuery: (query: string) => void;
+  setLanguage: (language: string) => void;
   setPageNumber: (page: number) => void;
 }
 
@@ -101,3 +115,18 @@ export const useIsMoviesSelectedStore = create<isMoviesSelectedStore>(
     setIsMoviesSelected: (isSelected) => set((store) => ({ isSelected })),
   })
 );
+
+export const useSearchQueryStore = create<searchQueryStore>((set) => ({
+  searchQuery: {
+    query: "",
+    include_adult: false,
+    language: "en-US",
+    page: 1,
+  },
+  setQuery: (query) =>
+    set((store) => ({ searchQuery: { ...store.searchQuery, query } })),
+  setLanguage: (language) =>
+    set((store) => ({ searchQuery: { ...store.searchQuery, language } })),
+  setPageNumber: (page) =>
+    set((store) => ({ searchQuery: { ...store.searchQuery, page } })),
+}));
