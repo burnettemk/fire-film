@@ -1,9 +1,9 @@
-import { Box, SimpleGrid, Spinner } from "@chakra-ui/react";
-import useMovies from "../hooks/useMovies";
-import MovieCard from "./MovieCard";
-import CardSkeleton from "./CardSkeleton";
-import React from "react";
+import { SimpleGrid, Spinner } from "@chakra-ui/react";
+import React, { useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import useMovies from "../hooks/useMovies";
+import CardSkeleton from "./CardSkeleton";
+import MovieCard from "./MovieCard";
 
 const MovieGrid = () => {
   const {
@@ -15,6 +15,7 @@ const MovieGrid = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useMovies();
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   const fetchedMoviesCount =
