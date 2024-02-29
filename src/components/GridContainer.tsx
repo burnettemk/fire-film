@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import { useIsMoviesSelectedStore, useSearchQueryStore } from "../store";
-import ActionButton from "./ActionButton";
 import MovieGrid from "./MovieGrid";
 import MovieSortOrderSelector from "./MovieSortOrderSelector";
 import SearchResultGrid from "./SearchResultGrid";
