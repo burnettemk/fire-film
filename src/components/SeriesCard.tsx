@@ -4,6 +4,7 @@ import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import apiConfig from "../configuration/apiConfig";
+import imageNotSupported from "../assets/ImageNotSupported.png";
 
 interface Props {
   series: Series;
@@ -16,7 +17,11 @@ const SeriesCard = ({ series }: Props) => {
         // width={{ sm: "80%" }}
         // mx="auto"
         borderRadius={10}
-        src={getCroppedImageUrl(apiConfig.images.base_url + series.poster_path)}
+        src={
+          series.poster_path
+            ? getCroppedImageUrl(apiConfig.images.base_url + series.poster_path)
+            : imageNotSupported
+        }
       />
       <CardBody>
         <Box

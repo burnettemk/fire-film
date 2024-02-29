@@ -3,6 +3,7 @@ import { Movie } from "../hooks/useMovies";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import apiConfig from "../configuration/apiConfig";
+import imageNotSupported from "../assets/ImageNotSupported.png";
 
 interface Props {
   movie: Movie;
@@ -14,7 +15,11 @@ const MovieCard = ({ movie }: Props) => {
         // width={{ sm: "80%" }}
         // mx="auto"
         borderRadius={10}
-        src={getCroppedImageUrl(apiConfig.images.base_url + movie.poster_path)}
+        src={
+          movie.poster_path
+            ? getCroppedImageUrl(apiConfig.images.base_url + movie.poster_path)
+            : imageNotSupported
+        }
       />
       <CardBody>
         <Box
