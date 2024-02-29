@@ -20,7 +20,7 @@ const useSearchTV = () => {
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
-      return allPages.length <= lastPage.total_pages || allPages.length <= 500
+      return allPages.length < lastPage.total_pages && allPages.length < 500
         ? allPages.length + 1
         : undefined;
     },
