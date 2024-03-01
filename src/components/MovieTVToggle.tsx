@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HStack, Icon, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Icon, Text, VStack } from "@chakra-ui/react";
 import {
   PiArrowBendDownRightBold,
   PiArrowBendUpLeftBold,
@@ -13,7 +13,7 @@ const MovieTVToggle = () => {
   );
 
   return (
-    <>
+    <Box ml={2} mr={1}>
       <VStack
         color="gray.600"
         onClick={() => {
@@ -37,13 +37,13 @@ const MovieTVToggle = () => {
             color={isMoviesSelected ? "" : "gray.400"}
             transition="color 0.25s ease-out"
             userSelect="none"
-            paddingLeft={3}
+            pl={3}
           >
             TV
           </Text>
         </HStack>
       </VStack>
-    </>
+    </Box>
   );
 };
 

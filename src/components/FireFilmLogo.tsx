@@ -8,16 +8,14 @@ const FireFilmLogo = () => {
   return (
     <Box
       w="fit-content"
-      h="40px"
+      h="fit-content"
       bgGradient="linear(to-br, #FF4500, #ff0000, #fa4d0a)"
       borderRadius="full"
-      paddingX={3}
-      paddingY={2}
-      mx={2}
+      px={3}
+      py={2}
+      mr={2}
+      ml={1}
       color="black"
-      boxShadow="xl"
-      // fontWeight='bold'
-      // fontSize='sm'
       id="fire-film"
       onClick={() => setSearchQuery("")}
       userSelect="none"
@@ -35,16 +33,14 @@ const FireFilmLogo = () => {
       <Tooltip label="Take Survey" aria-label="A tooltip">
         <Box
           w="fit-content"
-          h="40px"
+          h="fit-content"
           bgGradient="linear(to-br, #FF4500, #ff0000, #fa4d0a)"
           borderRadius="full"
-          paddingX={3}
-          paddingY={2}
-          mx={2}
+          px={3}
+          py={2}
+          mr={2}
+          ml={1}
           color="black"
-          boxShadow="xl"
-          // fontWeight='bold'
-          // fontSize='sm'
           id="fire-film"
         >
           FF

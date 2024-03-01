@@ -6,14 +6,10 @@ import FireFilmLogo from "./FireFilmLogo";
 const NavBar = () => {
   return (
     <Box bg="blackAlpha.300">
-      <Flex padding={2} mx={3}>
+      <Flex p={2} mx={3} pt={3}>
         <FireFilmLogo />
-        <Box flexGrow={1}>
-          <SearchInput />
-        </Box>
-        <Box mx={2}>
-          <MovieTVToggle />
-        </Box>
+        <SearchInput />
+        <MovieTVToggle />
       </Flex>
     </Box>
   );
