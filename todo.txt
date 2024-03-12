@@ -1,16 +1,11 @@
-Nothing can get done in this app without the proper ids
-Find the ids and then you can use them in your queries
-Test if useData stills works even if we give it an object with more properties than needed
-
-Don't worry about having a perfect solution right now, you need to focus on getting the job done.
-Trying to find the perfect solution would be a distraction from our goal. We can always refactor
-later.
-
-https://api.themoviedb.org/3/search/collection
-https://api.themoviedb.org/3/search/keyword
-https://api.themoviedb.org/3/search/company
-https://api.themoviedb.org/3/search/movie
-https://api.themoviedb.org/3/search/multi
-https://api.themoviedb.org/3/search/person
-https://api.themoviedb.org/3/search/tv
-
+RatingRadio.tsx - This will be deleted soon in favor of an OR selection control
+RatingSelection.tsx - I want the drawer to close on changing the value. But I should probably implement an OR selection control instead and
+                        wait for the user to click an 'Apply' button or to close the drawer.
+MovieGridDisplay.tsx + TVGridDisplay - I need to have consistent spacing for these two grid displays
+RatingList.tsx - Will be a list displaying the current available ratings depending on the country of the user
+    - get a list of ratings by country code
+    - display the list of ratings with selectable buttons
+    - describe desired button theme in theme.ts
+    - implement theme if time permits it
+    - use onClick events for each button to call a function that saves changes as local state
+    - call setCertification() to update the state of the app and query new data
