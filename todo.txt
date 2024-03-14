@@ -4,8 +4,7 @@ RatingSelection.tsx - I want the drawer to close on changing the value. But I sh
 MovieGridDisplay.tsx + TVGridDisplay - I need to have consistent spacing for these two grid displays
 RatingList.tsx - Will be a list displaying the current available ratings depending on the country of the user
     - get a list of ratings by country code
-    - display the list of ratings with selectable buttons
+        - find a way to use variables to reference the desired property
     - describe desired button theme in theme.ts
     - implement theme if time permits it
-    - use onClick events for each button to call a function that saves changes as local state
-    - call setCertification() to update the state of the app and query new data
+SelectionList.tsx - Add an 'Apply Changes' button so query doesn't happen immediately

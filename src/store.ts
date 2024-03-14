@@ -10,6 +10,8 @@ interface MovieQuery {
   with_cast?: string;
   with_genres?: string;
   "vote_count.gte"?: number;
+  certification: string;
+  certification_country: string;
 }
 
 interface TVQuery {
@@ -43,6 +45,8 @@ interface MovieQueryStore {
   setCast: (cast: string) => void;
   setGenres: (genres: string) => void;
   setPageNumber: (page: number) => void;
+  setCertification: (certification_code: string) => void;
+  setCertificationCountry: (region_code: string) => void;
 }
 
 interface TVQueryStore {
@@ -68,7 +72,9 @@ export const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     language: "en-US",
     page: 1,
     sort_by: "popularity.desc",
-    "vote_count.gte": 250,
+    "vote_count.gte": 150,
+    certification: "",
+    certification_country: "",
   },
   setIncludeAdult: (include_adult) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, include_adult } })),
@@ -86,6 +92,12 @@ export const useMovieQueryStore = create<MovieQueryStore>((set) => ({
     set((store) => ({ movieQuery: { ...store.movieQuery, with_genres } })),
   setPageNumber: (page) =>
     set((store) => ({ movieQuery: { ...store.movieQuery, page } })),
+  setCertification: (certification) =>
+    set((store) => ({ movieQuery: { ...store.movieQuery, certification } })),
+  setCertificationCountry: (certification_country) =>
+    set((store) => ({
+      movieQuery: { ...store.movieQuery, certification_country },
+    })),
 }));
 
 export const useTVQueryStore = create<TVQueryStore>((set) => ({
@@ -95,7 +107,7 @@ export const useTVQueryStore = create<TVQueryStore>((set) => ({
     language: "en-US",
     page: 1,
     sort_by: "popularity.desc",
-    "vote_count.gte": 250,
+    "vote_count.gte": 150,
   },
   setIncludeAdult: (include_adult) =>
     set((store) => ({ tvQuery: { ...store.tvQuery, include_adult } })),
