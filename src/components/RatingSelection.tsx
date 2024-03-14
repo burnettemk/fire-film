@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useMovieQueryStore } from "../store";
-import RatingRadio from "./RatingRadio";
 import RatingList from "./RatingList";
 import SelectionList from "./SelectionList";
 
