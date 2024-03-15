@@ -1,6 +1,8 @@
-import React, { Children, useRef, useState } from "react";
+import { Box, HStack } from "@chakra-ui/react";
+import { useContext, useRef, useState } from "react";
+import ApplyButton from "./ApplyButton";
+import { DrawerContext } from "./DrawerContext";
 import Selector from "./Selector";
-import { HStack } from "@chakra-ui/react";
 
 interface Props {
   labels: string[];
@@ -9,30 +11,45 @@ interface Props {
 
 const SelectionList = ({ labels, onChange }: Props) => {
   const selectionRef = useRef([""]);
+  const [changesExist, setChangesExist] = useState(false);
+
+  const closeDrawer = useContext(DrawerContext);
 
   const handleChange = (newSelection: string, state: boolean) => {
     if (state) {
       selectionRef.current = selectionRef.current
         .concat(newSelection)
         .filter((label) => label != "");
-      onChange(selectionRef.current.toString().replaceAll(",", "|"));
+
+      setChangesExist(true);
     } else {
       selectionRef.current = selectionRef.current.filter(
         (label) => label != newSelection
       );
-      onChange(selectionRef.current.toString().replaceAll(",", "|"));
+
+      if (selectionRef.current.length === 0 && !changesExist)
+        setChangesExist(true);
+      else if (selectionRef.current.length === 0) setChangesExist(false);
     }
-    // console.log(selectionRef.current.toString().replaceAll(",", "|"));
+  };
+
+  const applyChanges = () => {
+    onChange(selectionRef.current.toString().replaceAll(",", "|"));
+    setChangesExist(false);
+    closeDrawer();
   };
 
   return (
-    <>
+    <Box>
       <HStack>
         {labels.map((label) => (
           <Selector label={label} onSelectionClick={handleChange} key={label} />
         ))}
       </HStack>
-    </>
+      <Box width="fit-content" mx="auto" mt={4}>
+        <ApplyButton changesExist={changesExist} apply={applyChanges} />
+      </Box>
+    </Box>
   );
 };
 

@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react";
-import GenreSelection from "./GenreSelection";
+import { Box, VStack } from "@chakra-ui/react";
 import { useIsMoviesSelectedStore } from "../store";
+import GenreSelection from "./GenreSelection";
+import RatingSelection from "./RatingSelection";
 import TVGenreSelection from "./TVGenreSelection";
 
 const Filters = () => {
@@ -8,7 +9,10 @@ const Filters = () => {
   return (
     <>
       <Box width="fit-content" mx="auto" mt="10px">
-        {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
+        <VStack>
+          {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
+          <RatingSelection />
+        </VStack>
       </Box>
     </>
   );

@@ -7,13 +7,12 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Input,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { useMovieQueryStore } from "../store";
+import { DrawerContext } from "./DrawerContext";
 import RatingList from "./RatingList";
-import SelectionList from "./SelectionList";
 
 const RatingSelection = () => {
   const setRegion = useMovieQueryStore((s) => s.setCertificationCountry);
@@ -40,11 +39,19 @@ const RatingSelection = () => {
           <DrawerHeader>Select Age Rating</DrawerHeader>
 
           <DrawerBody>
-            <RatingList />
+            <DrawerContext.Provider value={onClose}>
+              <RatingList />
+            </DrawerContext.Provider>
           </DrawerBody>
 
           <DrawerFooter>
-            <Button colorScheme="blue" onClick={() => setRating("")}>
+            <Button
+              colorScheme="blue"
+              onClick={() => {
+                setRating("");
+                onClose();
+              }}
+            >
               Reset
             </Button>
           </DrawerFooter>

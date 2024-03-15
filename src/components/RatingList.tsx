@@ -1,6 +1,5 @@
-import React from "react";
-import { useMovieQueryStore } from "../store";
 import movieCertifications from "../data/configuration";
+import { useMovieQueryStore } from "../store";
 import SelectionList from "./SelectionList";
 
 const RatingList = () => {
