@@ -11,7 +11,7 @@ const Filters = () => {
       <Box width="fit-content" mx="auto" mt="10px">
         <VStack>
           {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
-          <RatingSelection />
+          {isMoviesSelected ? <RatingSelection /> : null}
         </VStack>
       </Box>
     </>
