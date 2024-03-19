@@ -13,7 +13,7 @@ const MovieTVToggle = () => {
   );
 
   return (
-    <Box ml={2} mr={1}>
+    <Box ml={2}>
       <VStack
         color="gray.600"
         onClick={() => {
