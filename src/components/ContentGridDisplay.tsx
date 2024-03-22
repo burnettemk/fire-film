@@ -1,38 +1,38 @@
-import React from "react";
-import { Series } from "../hooks/useTV";
-import { FetchResponse } from "../services/api-client";
-import { InfiniteData, UseInfiniteQueryResult } from "@tanstack/react-query";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { SimpleGrid, Spinner } from "@chakra-ui/react";
+import { InfiniteData, UseInfiniteQueryResult } from "@tanstack/react-query";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Content from "../entities/Content";
+import { FetchResponse } from "../services/api-client";
 import CardSkeleton from "./CardSkeleton";
-import SeriesCard from "./SeriesCard";
+import ContentCard from "./ContentCard";
 
 interface Props {
   response: UseInfiniteQueryResult<
-    InfiniteData<FetchResponse<Series>, unknown>,
+    InfiniteData<FetchResponse<Content>, unknown>,
     Error
   >;
 }
 
-const TVGridDisplay = ({ response }: Props) => {
+const ContentGridDisplay = ({ response }: Props) => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   const {
     data,
-    error,
     isLoading,
+    error,
+    hasNextPage,
     fetchNextPage,
     isFetching,
-    hasNextPage,
     isFetchingNextPage,
   } = response;
 
-  const fetchedSeriesCount =
+  const fetchedContentCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
   return (
     <InfiniteScroll
-      dataLength={fetchedSeriesCount}
+      dataLength={fetchedContentCount}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
       loader={<Spinner />}
@@ -45,16 +45,16 @@ const TVGridDisplay = ({ response }: Props) => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 4, xl: 5 }}
         spacing={{ base: "3.5em", lg: "2.5em", "2xl": "2.9em" }}
-        padding={{ base: "4em" }}
+        padding={"4em"}
         mx="auto"
-        w="89%"
+        w="90%"
       >
         {isLoading &&
           skeletons.map((skeleton) => <CardSkeleton key={skeleton} />)}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.results.map((series) => (
-              <SeriesCard key={series.id} series={series} />
+            {page.results.map((content) => (
+              <ContentCard key={content.id} content={content} />
             ))}
           </React.Fragment>
         ))}
@@ -63,4 +63,4 @@ const TVGridDisplay = ({ response }: Props) => {
   );
 };
 
-export default TVGridDisplay;
+export default ContentGridDisplay;

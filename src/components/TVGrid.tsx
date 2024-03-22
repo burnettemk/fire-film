@@ -1,10 +1,10 @@
 import useTV from "../hooks/useTV";
-import TVGridDisplay from "./TVGridDisplay";
+import ContentGridDisplay from "./ContentGridDisplay";
 
 const TVGrid = () => {
   const responseData = useTV();
 
-  return <TVGridDisplay response={responseData} />;
+  return <ContentGridDisplay response={responseData} />;
 };
 
 export default TVGrid;

@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import Movie from "../entities/Movie";
 import APICLient from "../services/api-client";
 import { useSearchQueryStore } from "../store";
-import { Movie } from "./useMovies";
 
 const apiClient = new APICLient<Movie>("/search/movie");
 

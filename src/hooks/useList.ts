@@ -1,4 +1,4 @@
-import { Movie } from "./useMovies";
+import Movie from "../entities/Movie";
 import APICLient, { FetchResponse } from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
 

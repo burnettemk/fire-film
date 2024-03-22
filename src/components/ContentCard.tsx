@@ -1,16 +1,15 @@
-import React from "react";
-import { Series } from "../hooks/useTV";
 import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
-import CriticScore from "./CriticScore";
-import getCroppedImageUrl from "../services/image-url";
-import apiConfig from "../configuration/apiConfig";
 import imageNotSupported from "../assets/ImageNotSupported.png";
+import apiConfig from "../configuration/apiConfig";
+import Content from "../entities/Content";
+import getCroppedImageUrl from "../services/image-url";
+import CriticScore from "./CriticScore";
 
 interface Props {
-  series: Series;
+  content: Content;
 }
 
-const SeriesCard = ({ series }: Props) => {
+const ContentCard = ({ content }: Props) => {
   return (
     <Card overflow="hidden" bg="transparent">
       <Image
@@ -18,8 +17,10 @@ const SeriesCard = ({ series }: Props) => {
         // mx="auto"
         borderRadius={10}
         src={
-          series.poster_path
-            ? getCroppedImageUrl(apiConfig.images.base_url + series.poster_path)
+          content.poster_path
+            ? getCroppedImageUrl(
+                apiConfig.images.base_url + content.poster_path
+              )
             : imageNotSupported
         }
       />
@@ -33,7 +34,7 @@ const SeriesCard = ({ series }: Props) => {
           }}
           paddingBottom={2}
         >
-          <CriticScore score={series.vote_average} />
+          <CriticScore score={content.vote_average} />
         </Box>
         <Heading
           fontSize={{
@@ -46,11 +47,11 @@ const SeriesCard = ({ series }: Props) => {
           }}
           textAlign="center"
         >
-          {series.name}
+          {content.title ? content.title : content.name}
         </Heading>
       </CardBody>
     </Card>
   );
 };
 
-export default SeriesCard;
+export default ContentCard;

@@ -1,8 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import Series from "../entities/Series";
 import APICLient from "../services/api-client";
 import { useSearchQueryStore } from "../store";
-import { Movie } from "./useMovies";
-import { Series } from "./useTV";
 
 const apiClient = new APICLient<Series>("/search/tv");
 

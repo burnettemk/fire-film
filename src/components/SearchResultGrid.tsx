@@ -1,10 +1,10 @@
 import useSearchMovie from "../hooks/useSearchMovie";
-import MovieGridDisplay from "./MovieGridDisplay";
+import ContentGridDisplay from "./ContentGridDisplay";
 
 const SearchResultGrid = () => {
   const responseData = useSearchMovie();
 
-  return <MovieGridDisplay response={responseData} />;
+  return <ContentGridDisplay response={responseData} />;
 };
 
 export default SearchResultGrid;

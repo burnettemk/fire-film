@@ -1,16 +1,9 @@
-import { FetchResponse } from "../services/api-client";
-import { useTVQueryStore } from "../store";
-import APICLient from "../services/api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import Series from "../entities/Series";
+import APICLient, { FetchResponse } from "../services/api-client";
+import { useTVQueryStore } from "../store";
 
 const apiClient = new APICLient<Series>("/discover/tv");
-
-export interface Series {
-  id: number;
-  name: string;
-  poster_path: string;
-  vote_average: number;
-}
 
 const useMovies = () => {
   const tvQuery = useTVQueryStore((s) => s.tvQuery);

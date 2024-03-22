@@ -1,10 +1,10 @@
 import useMovies from "../hooks/useMovies";
-import MovieGridDisplay from "./MovieGridDisplay";
+import ContentGridDisplay from "./ContentGridDisplay";
 
 const MovieGrid = () => {
   const responseData = useMovies();
 
-  return <MovieGridDisplay response={responseData} />;
+  return <ContentGridDisplay response={responseData} />;
 };
 
 export default MovieGrid;

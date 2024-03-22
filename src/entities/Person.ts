@@ -1,4 +1,4 @@
-import { Movie } from "../hooks/useMovies";
+import Movie from "./Movie";
 
 interface Person {
   id: number;

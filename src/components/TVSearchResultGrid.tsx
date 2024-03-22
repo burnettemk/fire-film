@@ -1,10 +1,10 @@
 import useSearchTV from "../hooks/useSearchTV";
-import TVGridDisplay from "./TVGridDisplay";
+import ContentGridDisplay from "./ContentGridDisplay";
 
 const TVSearchResultGrid = () => {
   const responseData = useSearchTV();
 
-  return <TVGridDisplay response={responseData} />;
+  return <ContentGridDisplay response={responseData} />;
 };
 
 export default TVSearchResultGrid;
