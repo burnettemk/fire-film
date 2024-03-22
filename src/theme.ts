@@ -1,15 +1,55 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import MovieGrid from "./components/MovieGrid";
+import { defineStyleConfig } from "@chakra-ui/react";
+
+const value = "50px";
 
 const config: ThemeConfig = {
-    initialColorMode: 'dark'
-}
+  initialColorMode: "dark",
+};
 
-const theme = extendTheme({
-    components: {
-        MovieList: MovieGrid,
+const ActionButton = defineStyleConfig({
+  // The styles all button have in common
+  baseStyle: {
+    borderRadius: "100%",
+    position: "fixed",
+  },
+  // Two sizes: sm and md
+  sizes: {
+    sm: {
+      px: 3, // <-- px is short for paddingLeft and paddingRight
+      py: 3, // <-- py is short for paddingTop and paddingBottom
     },
-    config
+    md: {
+      px: 4, // <-- these values are tokens from the design system
+      py: 4, // <-- these values are tokens from the design system
+    },
+  },
+  // Two variants: outline and solid
+  variants: {
+    outline: {
+      border: "2px solid",
+      borderColor: "gray.700",
+      color: "gray.700",
+    },
+    solid: {
+      bg: "gray.700",
+      color: "white",
+    },
+  },
+  // The default size and variant values
+  defaultProps: {
+    size: "md",
+    variant: "outline",
+  },
 });
 
-export default theme
+const theme = extendTheme({
+  components: {
+    ActionButton,
+    // MovieList: MovieGrid,
+  },
+  config,
+});
+
+export default theme;

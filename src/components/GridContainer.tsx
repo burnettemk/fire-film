@@ -1,11 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import { useIsMoviesSelectedStore, useSearchQueryStore } from "../store";
+import ActionButton from "./ActionButton";
 import MovieGrid from "./MovieGrid";
 import MovieSortOrderSelector from "./MovieSortOrderSelector";
 import SearchResultGrid from "./SearchResultGrid";
 import TVGrid from "./TVGrid";
-import TVSortOrderSelector from "./TVSortOrderSelector";
 import TVSearchResultGrid from "./TVSearchResultGrid";
+import TVSortOrderSelector from "./TVSortOrderSelector";
+import { TiArrowUpThick } from "react-icons/ti";
 
 const GridContainer = () => {
   // const [sortOrder, setSortOrder] = useState("Popularity");
@@ -19,6 +21,9 @@ const GridContainer = () => {
     <>
       {isMoviesSelected ? <MovieSortOrderSelector /> : <TVSortOrderSelector />}
       <Box bg="blackAlpha.300">
+        <ActionButton size="md" variant="solid" right={"12px"} bottom={"65px"}>
+          <TiArrowUpThick /*size={"10px"}*/ />
+        </ActionButton>
         {isMoviesSelected ? <MovieGrid /> : <TVGrid />}
       </Box>
     </>

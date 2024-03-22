@@ -10,8 +10,8 @@ interface MovieQuery {
   with_cast?: string;
   with_genres?: string;
   "vote_count.gte"?: number;
-  certification: string;
-  certification_country: string;
+  certification?: string;
+  certification_country?: string;
 }
 
 interface TVQuery {

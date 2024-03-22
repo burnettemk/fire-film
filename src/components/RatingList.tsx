@@ -1,6 +1,6 @@
 import movieCertifications from "../data/configuration";
 import { useMovieQueryStore } from "../store";
-import SelectionList from "./SelectionList";
+import SelectionList from "../modules/SelectionList/SelectionList";
 
 const RatingList = () => {
   const countryCode = useMovieQueryStore(
