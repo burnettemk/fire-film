@@ -7,7 +7,7 @@ import SurveyLink from "./SurveyLink";
 
 const NavBar = () => {
   return (
-    <Box bg="blackAlpha.300">
+    <Box bg="blackAlpha.300" id="nav-bar">
       <Flex p={2} mx={3} pt={3}>
         <SurveyLink />
         <FireFilmLogo />
