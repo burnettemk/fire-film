@@ -3,8 +3,13 @@ import NavBar from "./components/NavBar";
 import Filters from "./components/Filters";
 import TMDBLogo from "./components/TMDBLogo";
 import GridContainer from "./components/GridContainer";
+import setPrefs from "./UserPrefsSetup";
 
 function App() {
+  // Calling setUserPrefs function when this component is mounted (at startup)
+  //  this component will never be unmounted so for now this works
+  setPrefs();
+
   return (
     <Grid
       templateAreas={{
