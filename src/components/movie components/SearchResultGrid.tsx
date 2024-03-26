@@ -1,5 +1,5 @@
-import useSearchMovie from "../hooks/useSearchMovie";
-import ContentGridDisplay from "./ContentGridDisplay";
+import useSearchMovie from "../../hooks/useSearchMovie";
+import ContentGridDisplay from "../ContentGridDisplay";
 
 const SearchResultGrid = () => {
   const responseData = useSearchMovie();

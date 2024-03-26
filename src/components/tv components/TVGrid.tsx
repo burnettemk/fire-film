@@ -1,5 +1,5 @@
-import useTV from "../hooks/useTV";
-import ContentGridDisplay from "./ContentGridDisplay";
+import useTV from "../../hooks/useTV";
+import ContentGridDisplay from "../ContentGridDisplay";
 
 const TVGrid = () => {
   const responseData = useTV();

@@ -1,5 +1,5 @@
-import useMovies from "../hooks/useMovies";
-import ContentGridDisplay from "./ContentGridDisplay";
+import useMovies from "../../hooks/useMovies";
+import ContentGridDisplay from "../ContentGridDisplay";
 
 const MovieGrid = () => {
   const responseData = useMovies();

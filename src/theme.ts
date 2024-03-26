@@ -1,5 +1,5 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
-import MovieGrid from "./components/MovieGrid";
+import MovieGrid from "./components/movie components/MovieGrid";
 import { defineStyleConfig } from "@chakra-ui/react";
 
 const value = "50px";

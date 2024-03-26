@@ -1,5 +1,5 @@
-import useSearchTV from "../hooks/useSearchTV";
-import ContentGridDisplay from "./ContentGridDisplay";
+import useSearchTV from "../../hooks/useSearchTV";
+import ContentGridDisplay from "../ContentGridDisplay";
 
 const TVSearchResultGrid = () => {
   const responseData = useSearchTV();

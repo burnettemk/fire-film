@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { useTVQueryStore } from "../store";
 import {
   Box,
   Button,
@@ -8,11 +6,13 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
+import { useMovieQueryStore } from "../../store";
 
-const TVSortOrderSelector = () => {
+const MovieSortOrderSelector = () => {
   const [order, setOrder] = useState("Popularity");
-  const setSortOrder = useTVQueryStore((s) => s.setSortOrder);
+  const setSortOrder = useMovieQueryStore((s) => s.setSortOrder);
 
   return (
     <Box width="fit-content" mx="auto" my="10px">
@@ -23,7 +23,7 @@ const TVSortOrderSelector = () => {
         <MenuList>
           <MenuItem
             onClick={() => {
-              setSortOrder("first_air_date.desc");
+              setSortOrder("release_date.desc");
               setOrder("Recent");
             }}
           >
@@ -51,4 +51,4 @@ const TVSortOrderSelector = () => {
   );
 };
 
-export default TVSortOrderSelector;
+export default MovieSortOrderSelector;

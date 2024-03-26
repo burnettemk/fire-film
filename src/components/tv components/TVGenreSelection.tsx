@@ -1,5 +1,5 @@
 import React from "react";
-import { useTVQueryStore } from "../store";
+import { useTVQueryStore } from "../../store";
 import {
   Button,
   Menu,
@@ -9,7 +9,7 @@ import {
   MenuOptionGroup,
 } from "@chakra-ui/react";
 import { IoChevronDown } from "react-icons/io5";
-import useGenresTV from "../hooks/useGenresTV";
+import useGenresTV from "../../hooks/useGenresTV";
 
 const TVGenreSelection = () => {
   const { data: genres, isLoading, error } = useGenresTV();

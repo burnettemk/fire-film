@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import { useIsMoviesSelectedStore, useSearchQueryStore } from "../store";
 import ActionButton from "./ActionButton";
-import MovieGrid from "./MovieGrid";
-import MovieSortOrderSelector from "./MovieSortOrderSelector";
-import SearchResultGrid from "./SearchResultGrid";
-import TVGrid from "./TVGrid";
-import TVSearchResultGrid from "./TVSearchResultGrid";
-import TVSortOrderSelector from "./TVSortOrderSelector";
+import MovieGrid from "./movie components/MovieGrid";
+import MovieSortOrderSelector from "./movie components/MovieSortOrderSelector";
+import SearchResultGrid from "./movie components/SearchResultGrid";
+import TVGrid from "./tv components/TVGrid";
+import TVSearchResultGrid from "./tv components/TVSearchResultGrid";
+import TVSortOrderSelector from "./tv components/TVSortOrderSelector";
 import { TiArrowUpThick } from "react-icons/ti";
 
 const GridContainer = () => {
