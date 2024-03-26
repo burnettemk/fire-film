@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useMovieQueryStore } from "../store";
-import { DrawerContext } from "./DrawerContext";
+import { DrawerContext } from "../contexts/DrawerContext";
 import RatingList from "./RatingList";
 
 const RatingSelection = () => {

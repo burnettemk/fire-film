@@ -1,7 +1,7 @@
 import { Box, HStack } from "@chakra-ui/react";
 import { useContext, useRef, useState } from "react";
 import ApplyButton from "./ApplyButton";
-import { DrawerContext } from "../../components/DrawerContext";
+import { DrawerContext } from "../../contexts/DrawerContext";
 import Selector from "./Selector";
 
 interface Props {
