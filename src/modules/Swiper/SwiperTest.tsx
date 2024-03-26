@@ -18,7 +18,7 @@ const SwiperTest = () => {
       navigation // Adds buttons to switch to the next swipe
       //   pagination={{ clickable: true }} // Adds a radio
       //   scrollbar={{ draggable: true }} // Adds a scrollbar to the swiper container
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log("slide change")}
     >
       <SwiperSlide>
