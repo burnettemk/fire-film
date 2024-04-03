@@ -17,7 +17,13 @@ const GridContainer = () => {
 
   return (
     <>
-      {isMoviesSelected ? <MovieSortOrderSelector /> : <TVSortOrderSelector />}
+      <Box bg="blackAlpha.300" pt={3}>
+        {isMoviesSelected ? (
+          <MovieSortOrderSelector />
+        ) : (
+          <TVSortOrderSelector />
+        )}
+      </Box>
       <Box bg="blackAlpha.300">
         {isMoviesSelected ? <MovieGrid /> : <TVGrid />}
       </Box>

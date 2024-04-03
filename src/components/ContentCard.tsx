@@ -13,8 +13,6 @@ const ContentCard = ({ content }: Props) => {
   return (
     <Card overflow="hidden" bg="transparent">
       <Image
-        // width={{ sm: "80%" }}
-        // mx="auto"
         borderRadius={10}
         src={
           content.poster_path
@@ -25,17 +23,6 @@ const ContentCard = ({ content }: Props) => {
         }
       />
       <CardBody>
-        {/* <Box
-          marginTop={{
-            base: "-50px",
-            md: "-45px",
-            lg: "-40px",
-            "2xl": "-40px",
-          }}
-          paddingBottom={2}
-        >
-          <CriticScore score={content.vote_average} />
-        </Box> */}
         <Heading
           fontSize={{
             // xs: "2xl",

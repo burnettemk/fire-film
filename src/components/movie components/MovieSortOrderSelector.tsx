@@ -15,7 +15,7 @@ const MovieSortOrderSelector = () => {
   const setSortOrder = useMovieQueryStore((s) => s.setSortOrder);
 
   return (
-    <Box width="fit-content" mx="auto" my="10px">
+    <Box width="fit-content" mx="auto">
       <Menu>
         <MenuButton as={Button} rightIcon={<IoChevronDown />}>
           {order}
