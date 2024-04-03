@@ -19,6 +19,7 @@ const RatingList = () => {
     <SelectionList
       labels={["G", "PG", "PG-13", "R"]}
       onChange={setRating}
+      selectionType="or"
     ></SelectionList>
   );
 };

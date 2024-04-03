@@ -2,8 +2,8 @@ import { Button, useStyleConfig } from "@chakra-ui/react";
 import React from "react";
 
 interface Props {
-  size: string;
-  variant: string;
+  size?: string;
+  variant?: string;
   positioning?: {
     left?: string;
     top?: string;
@@ -12,17 +12,18 @@ interface Props {
   };
   children: React.ReactNode;
   relativePosition?: string;
-  scrollToID?: string;
+  handleClick: () => void;
+  ref?: React.LegacyRef<HTMLButtonElement>;
 }
 
-const ActionButton = ({
+const DrawerButton = ({
   children,
   size,
   variant,
   positioning,
-  scrollToID,
+  handleClick,
 }: Props) => {
-  const styles = useStyleConfig("ActionButton", { size, variant });
+  const styles = useStyleConfig("BaseButton", { size, variant });
 
   return (
     <Button
@@ -31,15 +32,10 @@ const ActionButton = ({
       right={positioning?.left ? undefined : positioning?.right}
       top={positioning?.top ? positioning.top : undefined}
       bottom={positioning?.top ? undefined : positioning?.bottom}
-      onClick={() => {
-        const element = document.getElementById(
-          scrollToID ? scrollToID : "root"
-        );
-        element?.scrollIntoView({ behavior: "smooth" });
-      }}
+      onClick={() => handleClick()}
       children={children}
     ></Button>
   );
 };
 
-export default ActionButton;
+export default DrawerButton;

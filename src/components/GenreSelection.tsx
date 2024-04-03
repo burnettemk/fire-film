@@ -1,15 +1,12 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
-} from "@chakra-ui/react";
-import { IoChevronDown } from "react-icons/io5";
-import useGenres from "../hooks/useGenres";
-import { useMovieQueryStore } from "../store";
 import useGenre from "../hooks/useGenre";
+import useGenres from "../hooks/useGenres";
+import SelectionList from "../modules/SelectionList/SelectionList";
+import { useMovieQueryStore } from "../store";
+import DrawerDisplay from "./DrawerDisplay";
+
+const GenreList = () => {
+  // return <SelectionList labels={}></SelectionList>
+};
 
 const GenreSelection = () => {
   const { data: genres, isLoading, error } = useGenres();
@@ -18,24 +15,24 @@ const GenreSelection = () => {
   // Fix to make parse all ids from string
   const selectedGenre = useGenre(parseInt(selectedGenreID!));
 
+  const genreList = genres.genres.map((genre) => genre.name);
+  const idList = genres.genres.map((g) => g.id);
+
   return (
-    <Menu>
-      <MenuButton as={Button} rightIcon={<IoChevronDown />}>
-        {selectedGenreID ? selectedGenre?.name : "Genre"}
-      </MenuButton>
-      <MenuList>
-        <MenuOptionGroup
-          type="checkbox"
-          onChange={(ids) => setGenreIDs(ids.toString())}
-        >
-          {genres?.genres.map((genre) => (
-            <MenuItemOption key={genre?.id} value={genre?.id.toString()}>
-              {genre?.name}
-            </MenuItemOption>
-          ))}
-        </MenuOptionGroup>
-      </MenuList>
-    </Menu>
+    <DrawerDisplay
+      heading="Select Genres"
+      onReset={setGenreIDs}
+      children={
+        <SelectionList
+          labels={genreList}
+          labelIds={idList}
+          onChange={setGenreIDs}
+          selectionType="and"
+          needsID={true}
+        ></SelectionList>
+      }
+      buttonHeading="Genre"
+    />
   );
 };
 

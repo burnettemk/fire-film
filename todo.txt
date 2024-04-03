@@ -1,3 +1,7 @@
+ActionButton Positioning
+    - Allow myself to pass a prop that sets the positioning to be relative to either the top or bottom and either the left or right of the screen
+    - Add transitions for change of position and fade in/fade out fx for certain buttons
+
 MovieGridDisplay.tsx + TVGridDisplay - I need to have consistent spacing for these two grid displays
 
 Simplifying app structure (if any one these tasks starts to get too complex, break it down into more manageable chunks)

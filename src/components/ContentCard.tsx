@@ -25,7 +25,7 @@ const ContentCard = ({ content }: Props) => {
         }
       />
       <CardBody>
-        <Box
+        {/* <Box
           marginTop={{
             base: "-50px",
             md: "-45px",
@@ -35,7 +35,7 @@ const ContentCard = ({ content }: Props) => {
           paddingBottom={2}
         >
           <CriticScore score={content.vote_average} />
-        </Box>
+        </Box> */}
         <Heading
           fontSize={{
             // xs: "2xl",
