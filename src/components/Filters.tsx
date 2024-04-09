@@ -8,7 +8,7 @@ const Filters = () => {
   const isMoviesSelected = useIsMoviesSelectedStore((s) => s.isSelected);
   return (
     <>
-      <Box width="fit-content" mx="auto" my={3}>
+      <Box width="fit-content" mx="auto" my={3} id="filters">
         <VStack>
           {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
           {isMoviesSelected ? <RatingSelection /> : null}
