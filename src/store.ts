@@ -12,6 +12,8 @@ interface MovieQuery {
   "vote_count.gte"?: number;
   certification?: string;
   certification_country?: string;
+  "with_runtime.gte"?: number;
+  "with_runtime.lte"?: number;
 }
 
 interface TVQuery {
@@ -47,6 +49,7 @@ interface MovieQueryStore {
   setPageNumber: (page: number) => void;
   setCertification: (certification_code: string) => void;
   setCertificationCountry: (region_code: string) => void;
+  setRuntimeRange: (range: number[]) => void;
 }
 
 interface TVQueryStore {
@@ -97,6 +100,14 @@ export const useMovieQueryStore = create<MovieQueryStore>((set) => ({
   setCertificationCountry: (certification_country) =>
     set((store) => ({
       movieQuery: { ...store.movieQuery, certification_country },
+    })),
+  setRuntimeRange: (range) =>
+    set((store) => ({
+      movieQuery: {
+        ...store.movieQuery,
+        "with_runtime.gte": range[0],
+        "with_runtime.lte": range[1],
+      },
     })),
 }));
 

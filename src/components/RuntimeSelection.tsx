@@ -1,20 +1,17 @@
-import React from "react";
-import {
-  RangeSlider,
-  RangeSliderTrack,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-} from "@chakra-ui/react";
+import { useMovieQueryStore } from "../store";
+import DrawerDisplay from "./DrawerDisplay";
+import RuntimeSlider from "./RuntimeSlider";
 
 const RuntimeSelection = () => {
+  const setRuntimeRange = useMovieQueryStore((s) => s.setRuntimeRange);
+
   return (
-    <RangeSlider aria-label={["min", "max"]} defaultValue={[10, 30]}>
-      <RangeSliderTrack>
-        <RangeSliderFilledTrack />
-      </RangeSliderTrack>
-      <RangeSliderThumb index={0} />
-      <RangeSliderThumb index={1} />
-    </RangeSlider>
+    <DrawerDisplay
+      heading="Select runtime range"
+      onReset={() => setRuntimeRange([0, 400])}
+      buttonHeading="Runtime"
+      children={<RuntimeSlider setRuntime={setRuntimeRange} />}
+    />
   );
 };
 

@@ -1,7 +1,7 @@
-import { Box, HStack, NumberInputFieldProps, Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import { useContext, useRef, useState } from "react";
-import ApplyButton from "./ApplyButton";
 import { DrawerContext } from "../../contexts/DrawerContext";
+import ApplyButton from "./ApplyButton";
 import Selector from "./Selector";
 
 interface LabelObject {
@@ -24,6 +24,8 @@ const SelectionList = ({
   selectionType,
   needsID,
 }: Props) => {
+  const closeDrawer = useContext(DrawerContext);
+
   const selectionRef = useRef([""]);
   const [changesExist, setChangesExist] = useState(false);
 
@@ -41,8 +43,6 @@ const SelectionList = ({
 
   if (selectionType === "and") seperatorChar = ",";
   else seperatorChar = "|";
-
-  const closeDrawer = useContext(DrawerContext);
 
   const handleChange = (newSelection: string, state: boolean) => {
     if (state) {
