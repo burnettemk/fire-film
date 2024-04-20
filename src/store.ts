@@ -14,6 +14,9 @@ interface MovieQuery {
   certification_country?: string;
   "with_runtime.gte"?: number;
   "with_runtime.lte"?: number;
+  "primary_release_year.gte"?: string;
+  "primary_release_year.lte"?: string;
+  primary_release_year?: number;
 }
 
 interface TVQuery {
@@ -50,6 +53,7 @@ interface MovieQueryStore {
   setCertification: (certification_code: string) => void;
   setCertificationCountry: (region_code: string) => void;
   setRuntimeRange: (range: number[]) => void;
+  setYear: (year: number) => void;
 }
 
 interface TVQueryStore {
@@ -108,6 +112,10 @@ export const useMovieQueryStore = create<MovieQueryStore>((set) => ({
         "with_runtime.gte": range[0],
         "with_runtime.lte": range[1],
       },
+    })),
+  setYear: (primary_release_year) =>
+    set((store) => ({
+      movieQuery: { ...store.movieQuery, primary_release_year },
     })),
 }));
 

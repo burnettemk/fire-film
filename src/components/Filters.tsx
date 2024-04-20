@@ -4,6 +4,7 @@ import GenreSelection from "./GenreSelection";
 import RatingSelection from "./RatingSelection";
 import RuntimeSelection from "./RuntimeSelection";
 import TVGenreSelection from "./tv components/TVGenreSelection";
+import YearSelection from "./YearSelection";
 
 const Filters = () => {
   const isMoviesSelected = useIsMoviesSelectedStore((s) => s.isSelected);
@@ -14,6 +15,7 @@ const Filters = () => {
           {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
           {isMoviesSelected ? <RatingSelection /> : null}
           {isMoviesSelected ? <RuntimeSelection /> : null}
+          {isMoviesSelected ? <YearSelection /> : null}
         </SimpleGrid>
       </Box>
     </>

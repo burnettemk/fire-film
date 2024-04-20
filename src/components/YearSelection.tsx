@@ -1,23 +1,20 @@
-import React from "react";
 import { Select } from "@chakra-ui/react";
+import { useMovieQueryStore } from "../store";
+import DrawerDisplay from "./DrawerDisplay";
+import YearInput from "./YearInput";
 
 const YearSelection = () => {
-  return (
-    <Select placeholder="Select option">
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-    </Select>
-  );
-};
+  const setYear = useMovieQueryStore((s) => s.setYear);
 
-export const DecadeSelection = () => {
+  const handleReset = (value: string) => setYear(parseInt(value));
+
   return (
-    <Select placeholder="Select option">
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-    </Select>
+    <DrawerDisplay
+      heading="Select Year of Release"
+      onReset={handleReset}
+      buttonHeading="Year"
+      children={<YearInput setYear={setYear} />}
+    />
   );
 };
 

@@ -7,7 +7,7 @@ const RuntimeSelection = () => {
 
   return (
     <DrawerDisplay
-      heading="Select runtime range"
+      heading="Select Runtime Range"
       onReset={() => setRuntimeRange([0, 400])}
       buttonHeading="Runtime"
       children={<RuntimeSlider setRuntime={setRuntimeRange} />}
