@@ -8,7 +8,7 @@ const SurveyLink = () => {
       <Tooltip label="Take Survey" aria-label="a tooltip">
         <Box
           borderRadius="full"
-          bg="blue.800"
+          bg="orangered"
           w="fit-content"
           h="fit-content"
           p={2}

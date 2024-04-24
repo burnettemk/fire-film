@@ -5,12 +5,13 @@ import RatingSelection from "./RatingSelection";
 import RuntimeSelection from "./RuntimeSelection";
 import TVGenreSelection from "./tv components/TVGenreSelection";
 import YearSelection from "./YearSelection";
+import { backgroundStyles } from "../theme";
 
 const Filters = () => {
   const isMoviesSelected = useIsMoviesSelectedStore((s) => s.isSelected);
   return (
-    <>
-      <Box width="50%" mx="auto" my={3} id="filters" py={2}>
+    <Box bg={backgroundStyles.base} h="fit-content">
+      <Box width="50%" mx="auto" my={0} id="filters" py={5}>
         <SimpleGrid minChildWidth="80px" spacing="25px">
           {isMoviesSelected ? <GenreSelection /> : <TVGenreSelection />}
           {isMoviesSelected ? <RatingSelection /> : null}
@@ -18,7 +19,7 @@ const Filters = () => {
           {isMoviesSelected ? <YearSelection /> : null}
         </SimpleGrid>
       </Box>
-    </>
+    </Box>
   );
 };
 

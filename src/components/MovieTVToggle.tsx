@@ -12,38 +12,56 @@ const MovieTVToggle = () => {
     (s) => s.setIsMoviesSelected
   );
 
+  const [background, setBackground] = useState("");
+
   return (
-    <Box ml={2}>
-      <VStack
-        color="gray.600"
-        onClick={() => {
-          setIsMoviesSelected(!isMoviesSelected);
-          console.log(isMoviesSelected);
-        }}
+    <div
+      onMouseEnter={() => setBackground("#330e00")}
+      onMouseLeave={() => setBackground("")}
+    >
+      <Box
+        ml={2}
+        px={2}
+        pr={3}
+        borderWidth={2}
+        borderRadius="full"
+        borderColor="orangered"
+        fontSize="sm"
+        fontFamily="mono"
+        bgColor={background}
+        transition="background 0.15s ease-out"
       >
-        <HStack>
-          <Text
-            color={isMoviesSelected ? "gray.400" : ""}
-            transition="color 0.25s ease-out"
-            userSelect="none"
-          >
-            Movies
-          </Text>
-          <Icon as={PiArrowBendUpLeftBold} />
-        </HStack>
-        <HStack marginLeft={7} marginTop={-3}>
-          <Icon as={PiArrowBendDownRightBold} />
-          <Text
-            color={isMoviesSelected ? "" : "gray.400"}
-            transition="color 0.25s ease-out"
-            userSelect="none"
-            pl={3}
-          >
-            TV
-          </Text>
-        </HStack>
-      </VStack>
-    </Box>
+        <VStack
+          color="gray.600"
+          onClick={() => {
+            setIsMoviesSelected(!isMoviesSelected);
+            console.log(isMoviesSelected);
+          }}
+        >
+          <HStack>
+            <Text
+              color={isMoviesSelected ? "gray.400" : ""}
+              transition="color 0.25s ease-out"
+              userSelect="none"
+            >
+              Movies
+            </Text>
+            <Icon as={PiArrowBendUpLeftBold} />
+          </HStack>
+          <HStack marginLeft={7} marginTop={-3}>
+            <Icon as={PiArrowBendDownRightBold} />
+            <Text
+              color={isMoviesSelected ? "" : "gray.400"}
+              transition="color 0.25s ease-out"
+              userSelect="none"
+              pl={3}
+            >
+              TV
+            </Text>
+          </HStack>
+        </VStack>
+      </Box>
+    </div>
   );
 };
 

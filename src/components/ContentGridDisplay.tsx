@@ -86,7 +86,12 @@ const ContentGridDisplay = ({ response }: Props) => {
               <ContentCard key={content.id} content={content} />
             ))}
           </ContentGrid>
-          <Divider borderWidth={2} width={"89%"} margin="auto" />
+          <Divider
+            borderWidth={2}
+            width={"89%"}
+            margin="auto"
+            borderColor="orangered"
+          />
         </React.Fragment>
       ))}
     </InfiniteScroll>
