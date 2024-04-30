@@ -7,6 +7,7 @@ interface Person {
   popularity: number;
   profile_path: string;
   known_for: Movie[];
+  job?: string;
 }
 
 export default Person;

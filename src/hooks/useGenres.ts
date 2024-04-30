@@ -2,19 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import { axiosInstance } from "../services/api-client";
 import genres from "../data/genres";
-
-export interface Genre {
-  id: number;
-  name: string;
-}
+import Genre from "../entities/Genre";
 
 interface GenreResults {
   genres: Genre[];
 }
-
-const params = {
-  language: "en",
-};
 
 const fetchGenres = () => {
   return axiosInstance

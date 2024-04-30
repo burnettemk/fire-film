@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import { axiosInstance } from "../services/api-client";
 import genresTV from "../data/genresTV";
-import { Genre } from "./useGenres";
+import Genre from "../entities/Genre";
 
 interface GenreResults {
   genres: Genre[];
