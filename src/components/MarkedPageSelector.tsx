@@ -6,10 +6,13 @@ import getCroppedImageUrl from "../services/image-url";
 import { useMarkedContentStore } from "../store";
 
 const MarkedPageSelector = () => {
-  const markedContentStore = useMarkedContentStore();
   const markedItem = JSON.parse(useGetUserPrefs()!);
+  const markedContentStore = useMarkedContentStore();
 
-  if (markedContentStore.contentPosterPath == null) {
+  if (
+    markedContentStore.contentPosterPath == null &&
+    markedItem.contentPosterPath != null
+  ) {
     markedContentStore.setContentID(markedItem.contentID);
     markedContentStore.setContentPath(markedItem.contentPosterPath);
     markedContentStore.setContentPath(markedItem.contentType);
