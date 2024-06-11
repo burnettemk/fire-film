@@ -6,7 +6,7 @@ import {
   ThemeConfig,
 } from "@chakra-ui/react";
 import ActionButton from "./modules/ActionButton/ActionButtonTheme";
-import BaseButton from "./modules/ActionButton/BaseButtonTheme";
+// import BaseButton from "./modules/ActionButton/BaseButtonTheme";
 
 export const backgroundStyles = {
   1: "#381d2a",
@@ -41,7 +41,7 @@ const theme = extendTheme({
   config,
   components: {
     ActionButton,
-    BaseButton,
+    // BaseButton,
     // Button: DrawerButton,
     // MovieList: MovieGrid,
     Input: inputTheme,
