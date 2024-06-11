@@ -1,10 +1,8 @@
-import React, { useRef, useState } from "react";
-import { useGetUserPrefs } from "../hooks/useUserPrefs";
 import { Image } from "@chakra-ui/react";
-import getCroppedImageUrl from "../services/image-url";
-import apiConfig from "../configuration/apiConfig";
 import imageNotSupported from "../assets/ImageNotSupported.png";
-import eventBus from "../EventBus";
+import apiConfig from "../configuration/apiConfig";
+import { useGetUserPrefs } from "../hooks/useUserPrefs";
+import getCroppedImageUrl from "../services/image-url";
 import { useMarkedContentStore } from "../store";
 
 const MarkedPageSelector = () => {
