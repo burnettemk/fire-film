@@ -5,7 +5,7 @@ import apiConfig from "../configuration/apiConfig";
 import Content from "../entities/Content";
 import { useSetUserPrefs } from "../hooks/useUserPrefs";
 import getCroppedImageUrl from "../services/image-url";
-import { useIsMoviesSelectedStore, useMarkedContentStore } from "../store";
+import { useIsMoviesSelectedStore } from "../store";
 import MarkPageButton from "./MarkPageButton";
 
 interface Props {
@@ -14,15 +14,11 @@ interface Props {
 
 const ContentCard = ({ content }: Props) => {
   const moviesSelected = useIsMoviesSelectedStore().isSelected;
-  const markedContentStore = useMarkedContentStore();
 
   const pathString = moviesSelected ? "films" : "series";
 
   const handleClick = () => {
     useSetUserPrefs(content.id, content.poster_path, pathString);
-    markedContentStore.setContentID(content.id);
-    markedContentStore.setContentPath(content.poster_path);
-    markedContentStore.setContentType(pathString);
   };
 
   return (

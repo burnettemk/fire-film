@@ -3,7 +3,6 @@
   - [1.2. Larger Concerns](#12-larger-concerns)
     - [1.2.1. Organization](#121-organization)
     - [1.2.2. MarkedPageSelector](#122-markedpageselector)
-    - [1.2.3. Mixed Content Warnings](#123-mixed-content-warnings)
   - [1.3. For later](#13-for-later)
 
 # 1. Issues
@@ -29,10 +28,6 @@ With this component, we need to be able to get the following data:
 ```
 responseData.data?.pages[0].results[0].poster_path
 ```
-
-### 1.2.3. Mixed Content Warnings
-
-Recently, it appears as though the site has started utilizing https instead of http. Http is now an insecure protocal and these requests are being upgraded to https automatically, but these warnings still appear.
 
 ## 1.3. For later
 

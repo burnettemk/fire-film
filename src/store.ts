@@ -40,15 +40,6 @@ interface isMoviesSelectedStore {
   setIsMoviesSelected: (isSelected: boolean) => void;
 }
 
-interface markedContentStore {
-  contentID: number;
-  contentPosterPath: string;
-  contentType: string;
-  setContentID: (contentID: number) => void;
-  setContentPath: (path: string) => void;
-  setContentType: (type: string) => void;
-}
-
 interface MovieQueryStore {
   movieQuery: MovieQuery;
   setIncludeAdult: (include_adult: boolean) => void;
@@ -169,14 +160,4 @@ export const useSearchQueryStore = create<searchQueryStore>((set) => ({
     set((store) => ({ searchQuery: { ...store.searchQuery, language } })),
   setPageNumber: (page) =>
     set((store) => ({ searchQuery: { ...store.searchQuery, page } })),
-}));
-
-export const useMarkedContentStore = create<markedContentStore>((set) => ({
-  contentID: 0,
-  contentPosterPath: "",
-  contentType: "",
-  setContentID: (contentID) => set((store) => ({ contentID })),
-  setContentPath: (contentPosterPath) =>
-    set((store) => ({ contentPosterPath })),
-  setContentType: (contentType) => set((store) => ({ contentType })),
 }));
