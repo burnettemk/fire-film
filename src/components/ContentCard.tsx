@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import imageNotSupported from "../assets/ImageNotSupported.png";
 import apiConfig from "../configuration/apiConfig";
 import Content from "../entities/Content";
-import { useSetUserPrefs } from "../hooks/useUserPrefs";
 import getCroppedImageUrl from "../services/image-url";
 import { useIsMoviesSelectedStore } from "../store";
 import MarkPageButton from "./MarkPageButton";
+import { MarkedContent } from "./MarkedPageSelector";
 
 interface Props {
   content: Content;
@@ -18,7 +18,16 @@ const ContentCard = ({ content }: Props) => {
   const pathString = moviesSelected ? "films" : "series";
 
   const handleClick = () => {
-    useSetUserPrefs(content.id, content.poster_path, pathString);
+    let newObject: MarkedContent = {
+      contentId: content.id,
+      contentPosterPath: content.poster_path,
+      contentType: pathString,
+    };
+
+    // Check if window.addObjectToLocalStorage is defined before invoking it
+    if (window.addObjectToLocalStorage) {
+      window.addObjectToLocalStorage(newObject);
+    }
   };
 
   return (

@@ -1,40 +1,64 @@
-import { Image } from "@chakra-ui/react";
+import { Box, HStack, Image } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { MdCancel } from "react-icons/md";
 import imageNotSupported from "../assets/ImageNotSupported.png";
 import apiConfig from "../configuration/apiConfig";
-import { useGetUserPrefs } from "../hooks/useUserPrefs";
 import getCroppedImageUrl from "../services/image-url";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ContentRemoveButton from "./ContentRemoveButton";
 
-interface MarkedContent {
+export interface MarkedContent {
   contentId: number;
   contentPosterPath: string;
   contentType: string;
 }
 
-const MarkedPageSelector = () => {
-  // const [markedData, setMarkedData] = useState({});
-  // State to hold the object retrieved from localStorage, which can be of type User or null
-  const [storedObject, setStoredObject] = useState<MarkedContent | null>(null);
+// Extend the Window interface to include the addObjectToLocalStorage method
+declare global {
+  interface Window {
+    addObjectToLocalStorage?: (newObject: MarkedContent) => void;
+  }
+}
 
-  // if (useGetUserPrefs() == null) return <div id="no-content"></div>;
+const MarkedPageSelector = () => {
+  // State to hold the array of users retrieved from localStorage
+  const [storedArray, setStoredArray] = useState<MarkedContent[]>([]);
+
+  // Function to save object to localStorage array
+  const addObjectToLocalStorage = (contentObject: MarkedContent) => {
+    setStoredArray((prevArray) => {
+      const updatedArray = [...prevArray, contentObject];
+      localStorage.setItem("marked content", JSON.stringify(updatedArray));
+      return updatedArray;
+    });
+  };
+
+  // Function to remove object by index from localStorage array
+  const removeObjectFromLocalStorage = (index: number) => {
+    const updatedArray = storedArray.filter((_, i) => i !== index); // Remove the object at the specified index
+    localStorage.setItem("marked content", JSON.stringify(updatedArray));
+    setStoredArray(updatedArray); // Update the state with the new array
+  };
 
   // Function to continuously check for object in localStorage
   useEffect(() => {
-    const interval = setInterval(() => {
-      const stored = localStorage.getItem("marked content");
-      if (stored) {
-        setStoredObject(JSON.parse(stored) as MarkedContent); // Update state with the value in localStorage
-        console.log(storedObject);
-      } else {
-        setStoredObject(null); // Set state to null if object is not in localStorage
-      }
-    }, 250); // Check every quater of a second
+    // Load from localStorage on component mount
+    const stored = localStorage.getItem("marked content");
+    if (stored) {
+      setStoredArray(JSON.parse(stored) as MarkedContent[]);
+    }
 
-    return () => clearInterval(interval); // Clear interval on component unmount
+    // Expose the add function to the external window
+    window.addObjectToLocalStorage = (newObject: MarkedContent) => {
+      addObjectToLocalStorage(newObject);
+    };
+
+    // Clean up the function from the global window object
+    return () => {
+      delete window.addObjectToLocalStorage;
+    };
   }, []);
 
-  // I have added a state variable that can be used to trigger a re-render and we will
-  //  a boolean expression determine what to return based on the current state.
   return (
     <div
       id="marked-content-selector"
@@ -49,22 +73,33 @@ const MarkedPageSelector = () => {
         borderColor: "orangered",
       }}
     >
-      {/* I can see the changes to the marked content here because we have direct access to the
-      item in local storage and can see all of the changes in the item */}
-      {storedObject ? (
-        <Image
-          width={"75px"}
-          src={
-            storedObject.contentPosterPath
-              ? getCroppedImageUrl(
-                  apiConfig.images.secure_base_url +
-                    storedObject.contentPosterPath
-                )
-              : imageNotSupported
-          }
-        />
+      {storedArray.length > 0 ? (
+        <Box>
+          <HStack>
+            {storedArray.map((content, index) => (
+              <Box key={content.contentId} position="relative">
+                <ContentRemoveButton
+                  onClick={() => removeObjectFromLocalStorage(index)}
+                />
+                <Link to={`/${content.contentType}/` + content.contentId}>
+                  <Image
+                    width={"75px"}
+                    src={
+                      content.contentPosterPath
+                        ? getCroppedImageUrl(
+                            apiConfig.images.secure_base_url +
+                              content.contentPosterPath
+                          )
+                        : imageNotSupported
+                    }
+                  />
+                </Link>
+              </Box>
+            ))}
+          </HStack>
+        </Box>
       ) : (
-        <div>Nothing to see here...</div>
+        <p>No objects stored.</p>
       )}
     </div>
   );
